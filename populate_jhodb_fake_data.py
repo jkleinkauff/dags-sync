@@ -8,7 +8,7 @@ dag = DAG('jhodb_fake_date', description='Hello World DAG',
           start_date=datetime(2017, 3, 20), catchup=False)
 
 k = KubernetesPodOperator(
-    namespace="jhodb",
+    namespace="airflow",
     name="jhodb-fake-data",
     image="kleinkauff/jho-pg-datagen",
     cmds=["/bin/bash"],
