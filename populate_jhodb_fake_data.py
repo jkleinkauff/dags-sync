@@ -6,7 +6,7 @@ from airflow.contrib.operators.kubernetes_pod_operator import KubernetesPodOpera
 dag = DAG(
     "jhodb_fake_date",
     description="Hello World DAG",
-    schedule_interval="0 */3 * * *",
+    schedule_interval="0 */6 * * *",
     start_date=datetime(2017, 3, 20),
     catchup=False,
 )
