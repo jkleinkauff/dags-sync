@@ -18,6 +18,7 @@ k = KubernetesPodOperator(
     image_pull_policy='IfNotPresent',
     image='kleinkauff/spark-py',
     cmds=['/opt/spark/bin/spark-submit'],
+    is_delete_operator_pod=False,
     arguments=[
         '--master k8s://https://192.168.15.180:6443',
         # '--deploy-mode cluster',
