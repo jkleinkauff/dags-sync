@@ -18,7 +18,7 @@ k = KubernetesPodOperator(
     image_pull_policy="IfNotPresent",
     image="kleinkauff/spark-py",
     cmds=["/opt/spark/bin/spark-submit"],
-    is_delete_operator_pod=False,
+    is_delete_operator_pod=True,
     arguments=[
         "/opt/spark/bin/spark-submit",
         "--master",
