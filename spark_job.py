@@ -17,7 +17,7 @@ k = KubernetesPodOperator(
     namespace="airflow",
     image_pull_policy="IfNotPresent",
     image="kleinkauff/spark-py",
-    cmds=["/opt/spark/bin/spark-submit", "--conf spark.jars.ivy=/tmp/.ivy"],
+    cmds=["/opt/spark/bin/spark-submit", "--conf", "spark.jars.ivy=/tmp/.ivy"],
     is_delete_operator_pod=True,
     arguments=[
         "/opt/spark/bin/spark-submit",
