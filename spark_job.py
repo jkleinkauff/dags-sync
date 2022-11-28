@@ -23,8 +23,8 @@ k = KubernetesPodOperator(
         "/opt/spark/bin/spark-submit",
         "--master",
         "k8s://https://192.168.15.180:6443",
-        #"--deploy-mode",
-        #"cluster",
+        "--deploy-mode",
+        "cluster",
         "--name",
         "spark-pi",
         "--class",
@@ -34,9 +34,10 @@ k = KubernetesPodOperator(
         "--conf",
         "spark.jars.ivy=/tmp/.ivy2",
         "--conf",
+        "spark.driver.extraJavaOptions='-Divy.cache.dir=/tmp -Divy.home=/tmp'",
+        "--conf",
         "spark.kubernetes.container.image=kleinkauff/spark-py",
         "/opt/spark/examples/src/main/python/pi.py",
-
     ],
     dag=dag,
 )
