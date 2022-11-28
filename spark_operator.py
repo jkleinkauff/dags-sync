@@ -18,3 +18,5 @@ transformation = SparkKubernetesOperator(
     kubernetes_conn_id='kubernetes_default',
     do_xcom_push=False,
 )
+
+transformation
