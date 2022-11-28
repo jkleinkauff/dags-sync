@@ -16,7 +16,7 @@ k = KubernetesPodOperator(
     name='spark-job-task',
     namespace='airflow',
     image='kleinkauff/spark-py',
-    cmds=['./bin/spark-submit'],
+    cmds=['/opt/spark/bin/spark-submit'],
     arguments=[
         '--master k8s://https://192.168.15.180:6443',
         #'--deploy-mode cluster',
@@ -24,7 +24,7 @@ k = KubernetesPodOperator(
         ' --class org.apache.spark.examples.SparkPi',
         '--conf spark.executor.instances=3',
         '--conf spark.kubernetes.container.image=kleinkauff/spark-py',
-        '$SPARK_HOME/examples/src/main/python/pi.py'
+        '/opt/spark/examples/src/main/python/pi.py'
     ],
     dag=dag,
 )
