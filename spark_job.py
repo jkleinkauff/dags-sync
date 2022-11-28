@@ -34,6 +34,8 @@ k = KubernetesPodOperator(
         "--conf",
         "spark.kubernetes.container.image=kleinkauff/spark-py",
         "/opt/spark/examples/src/main/python/pi.py",
+        "--conf",
+        "spark.jars.ivy=/tmp/.ivy",
     ],
     dag=dag,
 )
