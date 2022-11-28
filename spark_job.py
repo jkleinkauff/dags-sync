@@ -15,6 +15,7 @@ k = KubernetesPodOperator(
     task_id='spark-job-task-ex',
     name='spark-job-task',
     namespace='airflow',
+    image_pull_policy='IfNotPresent',
     image='kleinkauff/spark-py',
     cmds=['/opt/spark/bin/spark-submit'],
     arguments=[
