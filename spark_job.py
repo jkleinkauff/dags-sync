@@ -19,9 +19,9 @@ k = KubernetesPodOperator(
     cmds=['/opt/spark/bin/spark-submit'],
     arguments=[
         '--master k8s://https://192.168.15.180:6443',
-        #'--deploy-mode cluster',
+        '--deploy-mode cluster',
         '--name spark-pi',
-        ' --class org.apache.spark.examples.SparkPi',
+        '--class org.apache.spark.examples.SparkPi',
         '--conf spark.executor.instances=3',
         '--conf spark.kubernetes.container.image=kleinkauff/spark-py',
         '/opt/spark/examples/src/main/python/pi.py'
