@@ -75,7 +75,7 @@ submit = SparkKubernetesOperator(
     kubernetes_conn_id="kubernetes_in_cluster",
     do_xcom_push=True,
     dag=dag,
-    # api_group="sparkoperator.hpe.com",
+    api_group="",
 )
 
 sensor = SparkKubernetesSensor(
@@ -84,7 +84,7 @@ sensor = SparkKubernetesSensor(
     application_name="{{ task_instance.xcom_pull(task_ids='spark_pi_submit')['metadata']['name'] }}",
     kubernetes_conn_id="kubernetes_in_cluster",
     dag=dag,
-    # api_group="sparkoperator.hpe.com",
+    api_group="",
     attach_log=True,
 )
 
