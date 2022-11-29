@@ -39,7 +39,7 @@ dag = DAG(
 
 submit = SparkKubernetesOperator(
     task_id="spark_pi_submit",
-    namespace="spark-operator",
+    namespace="airflow",
     application_file="spark/config.yaml",
     kubernetes_conn_id="kubernetes_in_cluster",
     do_xcom_push=True,
@@ -49,7 +49,7 @@ submit = SparkKubernetesOperator(
 
 sensor = SparkKubernetesSensor(
     task_id="spark_pi_monitor",
-    namespace="spark-operator",
+    namespace="airflow",
     application_name="{{ task_instance.xcom_pull(task_ids='spark_pi_submit')['metadata']['name'] }}",
     kubernetes_conn_id="kubernetes_in_cluster",
     dag=dag,
