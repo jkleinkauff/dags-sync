@@ -21,7 +21,7 @@ spec:
   image: "kleinkauff/spark-custom"
   mainClass: org.apache.spark.examples.SparkPi
   imagePullPolicy: IfNotPresent
-  mainApplicationFile: local:///opt/spark/examples/src/main/python/pi.py
+  mainApplicationFile: local:///opt/spark/work-dir/my-spark-job.py #local:///opt/spark/examples/src/main/python/pi.py
   sparkVersion: "3.2.2"
   restartPolicy:
     type: Never
