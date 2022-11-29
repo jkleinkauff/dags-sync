@@ -22,7 +22,7 @@ spec:
   mainClass: org.apache.spark.examples.SparkPi
   imagePullPolicy: IfNotPresent
   mainApplicationFile: s3a://spark-jobs-jho/pi.py #local:///opt/spark/examples/src/main/python/pi.py
-  sparkVersion: "3.1.1"
+  sparkVersion: "3.2.2"
   restartPolicy:
     type: Never
   driver:
@@ -30,12 +30,12 @@ spec:
     coreLimit: "1200m"
     memory: "4g"
     labels:
-      version: 3.1.1
+      version: 3.2.2
     serviceAccount: spark-operator
   executor:
     cores: 1
     instances: 1
     memory: "475M"
     labels:
-      version: 3.1.1
+      version: 3.2.2
     serviceAccount: spark-operator
