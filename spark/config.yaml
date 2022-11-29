@@ -18,7 +18,7 @@ spec:
   type: Python
   pythonVersion: "3"
   mode: cluster
-  image: "kleinkauff/spark-py"
+  image: "kleinkauff/spark-custom"
   mainClass: org.apache.spark.examples.SparkPi
   imagePullPolicy: IfNotPresent
   mainApplicationFile: local:///opt/spark/examples/src/main/python/pi.py
