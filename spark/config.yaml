@@ -31,9 +31,9 @@ spec:
       version: 3.1.1
     serviceAccount: spark-operator-release
   executor:
-    cores: 2
-    instances: 2
-    memory: "3g"
+    cores: 1
+    instances: 1
+    memory: "200M"
     labels:
       version: 3.1.1
     serviceAccount: spark-operator-release
