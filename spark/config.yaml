@@ -12,6 +12,7 @@ spec:
     spark.driver.extraJavaOptions: "-Divy.cache.dir=/tmp -Divy.home=/tmp"
     spark.kubernetes.local.dirs.tmpfs: "true"
     spark.kubernetes.file.upload.path: "/opt/spark/work-dir"
+    spark.executorEnv.AWS_ACCESS_KEY: AKIA2ABWPGCHJCLLTPUX
     # spark.hadoop.fs.s3a.impl: org.apache.hadoop.fs.s3a.S3AFileSystem
   # hadoopConf:
     # fs.s3a.impl: org.apache.hadoop.fs.s3a.S3AFileSystem
