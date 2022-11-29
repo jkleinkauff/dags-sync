@@ -12,7 +12,6 @@ spec:
     spark.driver.extraJavaOptions: "-Divy.cache.dir=/tmp -Divy.home=/tmp"
     spark.kubernetes.local.dirs.tmpfs: "true"
     spark.kubernetes.file.upload.path: "/opt/spark/work-dir"
-    spark.executorEnv.AWS_ACCESS_KEY: AKIA2ABWPGCHJCLLTPUX
     # spark.hadoop.fs.s3a.impl: org.apache.hadoop.fs.s3a.S3AFileSystem
   # hadoopConf:
     # fs.s3a.impl: org.apache.hadoop.fs.s3a.S3AFileSystem
@@ -33,6 +32,10 @@ spec:
     labels:
       version: 3.2.2
     serviceAccount: spark-operator
+    envSecretKeyRefs:
+      AWS_ACCESS_KEY:
+        name: aws
+        key: AWS_ACCESS_KEY
   executor:
     cores: 1
     instances: 1
