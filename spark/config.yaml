@@ -29,11 +29,11 @@ spec:
     memory: "4g"
     labels:
       version: 3.1.1
-    serviceAccount: spark-operator-release
+    serviceAccount: airflow
   executor:
     cores: 2
     instances: 2
     memory: "3g"
     labels:
       version: 3.1.1
-    serviceAccount: spark-operator-release
+    serviceAccount: airflow
