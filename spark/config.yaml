@@ -34,6 +34,7 @@ spec:
     serviceAccount: spark-operator
     envVars:
       AWS_ACCESS_KEY: "@AWS_ACCESS_KEY"
+      AWS_SECRET_ACCESS_KEY: "@AWS_SECRET_ACCESS_KEY"
   executor:
     cores: 1
     instances: 1

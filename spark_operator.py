@@ -11,26 +11,17 @@ from airflow.utils.dates import days_ago
 from airflow.models import Variable
 from airflow.providers.amazon.aws.hooks.base_aws import AwsBaseHook
 
-aws_access_key = Variable.get("AWS_ACCESS_KEY")
-
-
 #Replacing env vars in config.yaml - This is FAR from recommended. 
 # The ideal solution - for spark operator - is to enable a WebHook in k8s cluster
 # If not enabled, you need to use the env vars like I'm doing here
 
 aws_cred = AwsBaseHook("aws-spark", client_type="s3").get_credentials()
-s3_client = boto3.client(
-    "s3",
-    aws_access_key_id=aws_cred.access_key,
-    aws_secret_access_key=aws_cred.secret_key,
-)
-
-s3_client.download_file(f"data-lake-jho", "spark-jobs/config.yaml", "config.yaml")
 
 with open('config.yaml', 'r') as file :
   yaml_data = file.read()
 
-yaml_data = yaml_data.replace('@AWS_ACCESS_KEY', 'aws_access_key')
+yaml_data = yaml_data.replace('@AWS_ACCESS_KEY', aws_cred.access_key)
+yaml_data = yaml_data.replace('@AWS_SECRET_ACCESS_KEY', aws_cred.secret_key)
 
 default_args = {
     "owner": "airflow",
