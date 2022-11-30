@@ -32,15 +32,8 @@ spec:
     labels:
       version: 3.2.2
     serviceAccount: spark-operator
-    env:
-      - name: AWS_ACCESS_KEY
-        valueFrom:
-          secretKeyRef:
-            name: aws
-            key: AWS_ACCESS_KEY
-    envFrom:
-      - secretRef:
-          name: aws
+    envVars:
+      AWS_ACCESS_KEY: "@AWS_ACCESS_KEY"
   executor:
     cores: 1
     instances: 1
