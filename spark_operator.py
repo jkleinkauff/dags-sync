@@ -33,7 +33,7 @@ with open('config.yaml', 'r') as file :
 
 yaml_data = yaml_data.replace('@AWS_ACCESS_KEY', 'aws_access_key')
 
-with open('spark/config_custom.yaml', 'w') as file:
+with open('config_custom.yaml', 'w') as file:
   file.write(yaml_data)
 
 default_args = {
