@@ -16,7 +16,7 @@ aws_access_key = Variable.get("AWS_ACCESS_KEY")
 # The ideal solution - for spark operator - is to enable a WebHook in k8s cluster
 # If not enabled, you need to use the env vars like I'm doing here
 
-with open('./config.yaml', 'r') as file :
+with open('/usr/local/airflow/dags/spark/config.yaml', 'r') as file :
   yaml_data = file.read()
 
 yaml_data = yaml_data.replace('@AWS_ACCESS_KEY', 'aws_access_key')
