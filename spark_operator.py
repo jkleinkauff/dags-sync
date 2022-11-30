@@ -16,7 +16,7 @@ aws_access_key = Variable.get("AWS_ACCESS_KEY")
 # The ideal solution - for spark operator - is to enable a WebHook in k8s cluster
 # If not enabled, you need to use the env vars like I'm doing here
 
-with open('spark/config.yaml', 'r') as file :
+with open('./config.yaml', 'r') as file :
   yaml_data = file.read()
 
 yaml_data = yaml_data.replace('@AWS_ACCESS_KEY', 'aws_access_key')
@@ -51,7 +51,7 @@ dag = DAG(
 submit = SparkKubernetesOperator(
     task_id="spark_pi_submit",
     namespace="airflow",
-    application_file="spark/config_custom.yaml",
+    application_file="spark/config.yaml",
     kubernetes_conn_id="kubernetes_in_cluster",
     do_xcom_push=True,
     dag=dag,
