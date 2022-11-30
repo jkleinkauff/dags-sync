@@ -18,7 +18,7 @@ aws_access_key = Variable.get("AWS_ACCESS_KEY")
 # The ideal solution - for spark operator - is to enable a WebHook in k8s cluster
 # If not enabled, you need to use the env vars like I'm doing here
 
-aws_cred = AwsBaseHook("aws", client_type="s3").get_credentials()
+aws_cred = AwsBaseHook("aws-spark", client_type="s3").get_credentials()
 s3_client = boto3.client(
     "s3",
     aws_access_key_id=aws_cred.access_key,
