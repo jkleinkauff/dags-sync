@@ -33,7 +33,7 @@ with open('config.yaml', 'r') as file :
 
 yaml_data = yaml_data.replace('@AWS_ACCESS_KEY', 'aws_access_key')
 
-with open('config_custom.yaml', 'w') as file:
+with open('./config_custom.yaml', 'w') as file:
   file.write(yaml_data)
 
 default_args = {
@@ -63,7 +63,7 @@ dag = DAG(
 submit = SparkKubernetesOperator(
     task_id="spark_pi_submit",
     namespace="airflow",
-    application_file="config_custom.yaml",
+    application_file="./config_custom.yaml",
     kubernetes_conn_id="kubernetes_in_cluster",
     do_xcom_push=True,
     dag=dag,
