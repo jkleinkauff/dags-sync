@@ -33,7 +33,7 @@ spec:
       version: 3.2.2
     serviceAccount: spark-operator
     envVars:
-      DEMOGRAPHICS_ES_URI: "somevalue"
+      AWS_ACCESS_KEY: "@AWS_ACCESS_KEY"
   executor:
     cores: 1
     instances: 1
