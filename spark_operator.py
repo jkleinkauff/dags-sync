@@ -17,6 +17,14 @@ from airflow.providers.amazon.aws.hooks.base_aws import AwsBaseHook
 
 aws_cred = AwsBaseHook("aws-spark", client_type="s3").get_credentials()
 
+s3_client = boto3.client(
+    "s3",
+    aws_access_key_id=aws_cred.access_key,
+    aws_secret_access_key=aws_cred.secret_key,
+)
+
+s3_client.download_file(f"data-lake-jho", "spark-jobs/config.yaml", "config.yaml")
+
 with open('config.yaml', 'r') as file :
   yaml_data = file.read()
 
