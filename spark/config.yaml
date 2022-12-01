@@ -6,7 +6,7 @@ metadata:
 spec:
   timeToLiveSeconds: 900
   sparkConf:
-    # spark.jars.packages: "org.apache.hadoop:hadoop-aws:3.2.0,org.apache.spark:spark-avro_2.12:3.0.1"
+    spark.jars.packages: "org.apache.hadoop:hadoop-aws:3.2.2"
     # spark.jars.packages: "software.amazon.awssdk:bundle:2.17.288,software.amazon.awssdk:url-connection-client:2.17.288,com.amazonaws:aws-java-sdk-bundle:1.12.319,org.apache.hadoop:hadoop-aws:3.2.0"
     spark.jars.ivy: /tmp/.ivy
     spark.driver.extraJavaOptions: "-Divy.cache.dir=/tmp -Divy.home=/tmp"
@@ -20,7 +20,7 @@ spec:
   mode: cluster
   image: "kleinkauff/spark-custom"
   mainClass: org.apache.spark.examples.SparkPi
-  imagePullPolicy: Always
+  imagePullPolicy: IfNotPresent
   mainApplicationFile: local:///opt/spark/work-dir/my-spark-job.py #local:///opt/spark/examples/src/main/python/pi.py
   sparkVersion: "3.2.2"
   restartPolicy:
@@ -33,11 +33,11 @@ spec:
       version: 3.2.2
     serviceAccount: spark-operator
     envVars:
-      AWS_ACCESS_KEY: "@AWS_ACCESS_KEY'"
-      AWS_SECRET_ACCESS_KEY: "@AWS_SECRET_ACCESS_KEY'"
+      AWS_ACCESS_KEY: "@AWS_ACCESS_KEY"
+      AWS_SECRET_ACCESS_KEY: "@AWS_SECRET_ACCESS_KEY"
   executor:
     cores: 1
-    instances: 1
+    instances: 2
     memory: "475M"
     labels:
       version: 3.2.2
