@@ -23,10 +23,10 @@ s3_client = boto3.client(
     aws_secret_access_key=aws_cred.secret_key,
 )
 
-# s3_client.download_file(f"data-lake-jho", "spark-jobs/config.yaml", "config.yaml")
+s3_client.download_file(f"data-lake-jho", "spark-jobs/config.yaml", "config.yaml")
 
-# with open('config.yaml', 'r') as file :
-#   yaml_data = file.read()
+with open('config.yaml', 'r') as file :
+  yaml_data = file.read()
 
 # yaml_data = yaml_data.replace('@AWS_ACCESS_KEY', aws_cred.access_key)
 # yaml_data = yaml_data.replace('@AWS_SECRET_ACCESS_KEY', aws_cred.secret_key)
