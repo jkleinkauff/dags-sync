@@ -18,9 +18,9 @@ spec:
   type: Python
   pythonVersion: "3"
   mode: cluster
-  image: "kleinkauff/spark-custom"
+  image: "kleinkauff/spark-custom:latest"
   mainClass: org.apache.spark.examples.SparkPi
-  imagePullPolicy: IfNotPresent #Always #IfNotPresent
+  imagePullPolicy: Always #Always #IfNotPresent
   mainApplicationFile: local:///opt/spark/work-dir/my-spark-job.py
   #local:///opt/spark/work-dir/my-spark-job.py #local:///opt/spark/examples/src/main/python/pi.py
   sparkVersion: "3.2.2"
@@ -29,11 +29,14 @@ spec:
   driver:
     envSecretKeyRefs:
       AWS_ACCESS_KEY_ID:
-        name: aws
-        key: AWS_ACCESS_KEY
+        name: aws-credentials
+        key: aws_access_key_id
       AWS_SECRET_ACCESS_KEY:
-        name: aws
-        key: AWS_SECRET_ACCESS_KEY
+        name: aws-credentials
+        key: aws_secret_access_key
+      ENVIRONMENT:
+        name: aws-credentials
+        key: environment
     cores: 1
     coreLimit: "1200m"
     memory: "4g"
